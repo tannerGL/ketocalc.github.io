@@ -45,13 +45,31 @@ function addFood(csv, foodName) {
     var ctlIndex = tableElem.rows.length-1;
     var ctlId = "ctl" + (ctlIndex >= 10 ? ctlIndex : "0"+ctlIndex);
     var newRowHtml = NEW_ROW_HTML;
-    
+
+    var foodRow = null;
+
+    for ( var i = 0; i < csv.length; i++ ) {
+        var ithRow = csv[i];
+        var ithFoodName = ithRow[HEADER__FOOD_NAME];
+
+        if ( foodName == ithFoodName ) {
+            foodRow = ithRow;
+            break;
+        }
+    }
+
+    if ( foodRow == null ) {
+        return;
+    }
+
+    debugger;
+
     newRowHtml = newRowHtml.replaceAll("${food_name}", foodName);
     newRowHtml = newRowHtml.replaceAll("${starting_grams}", "0");
-    newRowHtml = newRowHtml.replaceAll("${fat}", "36");
-    newRowHtml = newRowHtml.replaceAll("${protein}", "2");
-    newRowHtml = newRowHtml.replaceAll("${carbs}", "3");
-    newRowHtml = newRowHtml.replaceAll("${fiber}", "0");
+    newRowHtml = newRowHtml.replaceAll("${fat}", foodRow[HEADER__FAT]);
+    newRowHtml = newRowHtml.replaceAll("${protein}", foodRow[HEADER__PROTEIN]);
+    newRowHtml = newRowHtml.replaceAll("${carbs}", foodRow[HEADER__CARBS]);
+    newRowHtml = newRowHtml.replaceAll("${fiber}", foodRow[HEADER__FIBER]);
     newRowHtml = newRowHtml.replaceAll("ctl02", ctlId);
 
     row.innerHTML = newRowHtml;
