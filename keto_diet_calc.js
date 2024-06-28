@@ -143,7 +143,7 @@ $( document ).ready(function() {
             {
                 if (!tableElems.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
-                cells[2].textContent = toString(data[dataIndex++]);
+                cells[2].textContent = data[dataIndex++];
             }
         })
         .catch((error) => {
