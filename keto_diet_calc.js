@@ -140,7 +140,9 @@ $( document ).ready(function() {
         .then ((data) => {
             var dataIndex = 0;
             console.log(data)
-            for (var i = 0; i < tableElem.rows.length; ++i)
+            var tableElem = getTableElem();
+            var tableLength = tableElem.rows.length;
+            for (var i = 0; i < tableLength; ++i)
             {
                 if (!tableElems.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
