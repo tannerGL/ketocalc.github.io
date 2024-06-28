@@ -115,11 +115,11 @@ $( document ).ready(function() {
         {
             if (!tableElem.rows[i].id) continue;
             var cells = tableElem.rows[i].cells;
-            FoodItemsDict["Names"].append(cells[1].textContent);
-            FoodItemsDict["Protein"].append(parseFloat(cells[5].textContent));
-            FoodItemsDict["Fat"].append(parseFloat(cells[4].textContent));
-            FoodItemsDict["Net Carbs"].append(parseFloat(cells[6].textContent));
-            FoodItemsDict["kCals"].append(parseFloat(cells[9].textContent));
+            FoodItemsDict["Names"].push(cells[1].textContent);
+            FoodItemsDict["Protein"].push(parseFloat(cells[5].textContent));
+            FoodItemsDict["Fat"].push(parseFloat(cells[4].textContent));
+            FoodItemsDict["Net Carbs"].push(parseFloat(cells[6].textContent));
+            FoodItemsDict["kCals"].push(parseFloat(cells[9].textContent));
         }
 
         fetch("URL",
