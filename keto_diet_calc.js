@@ -139,11 +139,12 @@ $( document ).ready(function() {
         })
         .then ((data) => {
             var dataIndex = 0;
+            console.log(data)
             for (var i = 0; i < tableElem.rows.length; ++i)
             {
                 if (!tableElems.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
-                cells[2].getElementsByTagName("input")[0].value = data[dataIndex++];
+                cells[2].childNodes[1].value = data[dataIndex++];
             }
         })
         .catch((error) => {
