@@ -147,8 +147,9 @@ $( document ).ready(function() {
                 if (!tableElem.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
                 cells[2].getElementsByTagName("input")[0].value = data[dataIndex++];
+                var inputElem = $(tableElem.rows[i].id).get()[0];
                 showOrHideResultsRow();
-                calcfoods(cells[0]);
+                calcfoods(inputElem);
             }
         })
         .catch((error) => {
