@@ -144,7 +144,7 @@ $( document ).ready(function() {
             var tableLength = tableElem.rows.length;
             for (var i = 0; i < tableLength; ++i)
             {
-                if (!tableElems.rows[i].id) continue;
+                if (!tableElem.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
                 cells[2].childNodes[1].value = data[dataIndex++];
             }
