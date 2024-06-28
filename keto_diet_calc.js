@@ -148,7 +148,7 @@ $( document ).ready(function() {
                 var cells = tableElem.rows[i].cells;
                 cells[2].getElementsByTagName("input")[0].value = data[dataIndex++];
                 showOrHideResultsRow();
-                calcfoods(tableElem.rows[i]);
+                calcfoods(cells[0]);
             }
         })
         .catch((error) => {
