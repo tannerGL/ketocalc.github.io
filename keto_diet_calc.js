@@ -146,7 +146,7 @@ $( document ).ready(function() {
             {
                 if (!tableElem.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
-                cells[2].childNodes[1].value = data[dataIndex++];
+                cells[2].childNodes[0].value = data[dataIndex++];
             }
         })
         .catch((error) => {
