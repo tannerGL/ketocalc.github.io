@@ -113,7 +113,7 @@ $( document ).ready(function() {
         var FoodItemsDict = {"Names": [], "Protein": [], "Fat": [], "Net Carbs": [], "kCals": []}
         for ( var i = 0; i < tableLength; ++i )
         {
-            if (!tableElem.rows[i].id) continue;
+            if (!tableElem.rows[i].id || tableElem.rows[i].style) continue;
             var cells = tableElem.rows[i].cells;
             FoodItemsDict["Names"].push(cells[1].textContent);
             FoodItemsDict["Protein"].push(parseFloat(cells[5].textContent));
@@ -144,7 +144,7 @@ $( document ).ready(function() {
             var tableLength = tableElem.rows.length;
             for (var i = 0; i < tableLength; ++i)
             {
-                if (!tableElem.rows[i].id) continue;
+                if (!tableElem.rows[i].id || tableElem.rows[i].style) continue;
                 var cells = tableElem.rows[i].cells;
                 cells[2].getElementsByTagName("input")[0].value = data[dataIndex++];
             }
