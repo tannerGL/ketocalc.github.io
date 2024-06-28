@@ -122,10 +122,10 @@ $( document ).ready(function() {
             FoodItemsDict["kCals"].push(parseFloat(cells[9].textContent));
         }
 
-        fetch("URL",
+        fetch("/URL",
         {
             method: 'POST',
-            body: FoodItemsDict
+            body: JSON.stringify(FoodItemsDict)
         })
         .then((response) => {
             if (!response.ok)
