@@ -122,7 +122,7 @@ $( document ).ready(function() {
             FoodItemsDict["kCals"].push(parseFloat(cells[9].textContent));
         }
 
-        fetch("/URL",
+        fetch("tgerard1121.pythonanywhere.com/optimize",
         {
             method: 'POST',
             body: JSON.stringify(FoodItemsDict)
