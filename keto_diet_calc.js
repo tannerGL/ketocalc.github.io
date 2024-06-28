@@ -147,12 +147,8 @@ $( document ).ready(function() {
                 if (!tableElem.rows[i].id) continue;
                 var cells = tableElem.rows[i].cells;
                 cells[2].getElementsByTagName("input")[0].value = data[dataIndex++];
+                calcfoods(tableElem.rows[i]);
             }
-            var inputElem = $("#ctl00_MainContent_lvActualMeals_ctrl0_gvActualFoods_"+ctlId+"_txtActGrams").get()[0];
-
-            showOrHideResultsRow();
-
-            calcfoods(inputElem);
         })
         .catch((error) => {
             console.log("POST to Optimizer API failed.");
