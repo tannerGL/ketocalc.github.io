@@ -108,7 +108,44 @@ $( document ).ready(function() {
     $("#saveChangesBottom").hide();
 
     $("#optimize-button").on("click", function() {
-        alert("TODO: Hook up Python API.");
+        var tableElem = getTableElem();
+        var tableLength = tableElem.rows.length;
+        var FoodItemsDict = {"Names": [], "Protein": [], "Fat": [], "Net Carbs": [], "kCals": []}
+        for ( var i = 0; i < tableLength; ++i )
+        {
+            if (!tableElem.rows[i].id) continue;
+            var cells = tableElem.rows[i].cells;
+            FoodItemsDict["Names"].append(cells[1].textContent);
+            FoodItemsDict["Protein"].append(parseFloat(cells[5].textContent));
+            FoodItemsDict["Fat"].append(parseFloat(cells[4].textContent));
+            FoodItemsDict["Net Carbs"].append(parseFloat(cells[6].textContent));
+            FoodItemsDict["kCals"].append(parseFloat(cells[9].textContent));
+        }
+
+        fetch("URL",
+        {
+            method: 'POST',
+            body: FoodItemsDict
+        })
+        .then((response) => {
+            if (!response.ok)
+            {
+                throw new Error("Response from Optimizer API not ok.");
+            }
+            return response.json();
+        })
+        .then ((data) => {
+            var dataIndex = 0;
+            for (var i = 0; i < tableElem.rows.length; ++i)
+            {
+                if (!tableElems.rows[i].id) continue;
+                var cells = tableElem.rows[i].cells;
+                cells[2].textContent = toString(data[dataIndex++]);
+            }
+        })
+        .catch((error) => {
+            console.log("POST to Optimizer API failed.");
+        });
     });
 
     parseData("./table_cf.csv", function(csv) {
