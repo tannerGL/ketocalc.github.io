@@ -125,6 +125,9 @@ $( document ).ready(function() {
         fetch("tgerard1121.pythonanywhere.com/optimize",
         {
             method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(FoodItemsDict)
         })
         .then((response) => {
